@@ -17,8 +17,8 @@ rng(123)
 % Parameter set 1
 k = 10;      a1 = 10^(-6);  a2 = 10^(-5);  ka =10^(-5) ;
 % simulation
-tlim = 999;
-X0 = [0 0 ];
+tlim = 9999;
+X0 = [300 3000];
 tic
     [t, x] = chemGillespie(X0, tlim);
 seconds = toc
@@ -45,4 +45,10 @@ figure
     xlabel('time'); ylabel('states (# of X and Y)')
 %% Comparing behavior of the two  cases
 % 
+A = ka*a1/a2 ;
+B = a1 ;
+C = -k ;
 
+X1 = (-B + sqrt(B^2 - 4*A*C))/(2*A)
+% r2 = (-B - sqrt(B^2 - 4*A*C))/(2*A)
+Y1= a1/a2 *X1

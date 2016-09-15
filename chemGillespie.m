@@ -1,5 +1,5 @@
 
-function [t, X] = chemGillespie(X0, tlim)
+function [t, X, E] = chemGillespie(X0, tlim)
 %% Use global parameters
 global k  a1  a2  ka
 %% reactiona and vectors
@@ -15,6 +15,7 @@ v{1} = [1 0]; v{2} = [0 1];  v{3} = [-1 0];  v{4} = [0 -1];  v{5} = [-1 -1];
 S = length(X0);     % number of species
 t = zeros(1e6,1);   % 
 X = zeros(1e6,S);
+E = zeros(1e6,1); % record events
 X(1, :) = X0; 
 point = 1;              % keep track of points: a point can be any change in state
 
@@ -32,6 +33,7 @@ while t(point) < tlim
         t(point+1) = t(point) + log(1/rand)/a0; % Calculating the interevent time.
     % 3. witch event
         eventID = datasample(1:5, 1, 'weight', rates); 
+        E(point+1) = eventID; %record event
     % 4. update state                                       
         X(point+1, :) = X(point, :) + v{eventID}; % Updating the state.
     % 5. update the point counter.
