@@ -1,6 +1,5 @@
 % A function that "samples" a population at fixed time point
 %
-%
 function Xsample = fixsample(t, X, tsample, X0)
 if nargin < 4
 X0 = X(1);
