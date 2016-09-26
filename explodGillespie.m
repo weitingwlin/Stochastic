@@ -15,9 +15,6 @@ point = 1; %This variable is to keep track of the amount of points.
 while (t(point) < tlim) && (~isinf(k^x(point))) 
     % 1. calculate rate of each event
         a0 = k^x(point);    
-        if isinf(a0)
-            warning('rate reach infinity');
-        end
     % 2. inter event time
         t(point+1) = t(point) + log(1/rand)/a0; % Calculating the interevent time.
     % 3. update state                                       
