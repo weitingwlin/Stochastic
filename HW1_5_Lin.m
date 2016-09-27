@@ -23,11 +23,12 @@ global rB   rD   Im
 % simulation
     tlim = 30;
     n0 = 1;
-    it = 100; % interation of simulation
+    it = 1000; % interation of simulation
 %% ODE
     rng(123); % set seed
-    [t1, ns1] = ode45('BDIODE',[1 tlim],  1);
+    [t1, ns1] = ode45('BDIODE',[1 tlim],  n0);
 % Figure
+    figure
     myplot(t1-1, ns1, 'L'); hold on  % -1 so t starts at 0
     hline(n_fp);
         xlabel('time');    
@@ -57,7 +58,7 @@ end
     end
 % plot ODE vs. stochastic mean
     figure
-            myplot(t1, ns1, 'L'); hold on
+            myplot(t1-1, ns1, 'L'); hold on
             myplot(tsample, mean(xsample), 'L', 2);
             legend('ODE prediction', ['Mean of ' num2str(it) ' simulations'])
             xlabel('time')

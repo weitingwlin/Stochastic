@@ -14,7 +14,15 @@
 * **HW1\_3\_1\_Lin.m**: simulating chemical reaction with Gillespie method. Plot stationary distributions.
 * **HW1\_3\_2\_Lin.m**: explore the effect of initial values.
 * **HW1\_4\_Lin.m**: tau-leaping with Poisson or normal approximation
-* ****  
+* **HW1\_5\_Lin.m**: Birth-death-immigration model. 
+
+### functions
+* **BDIGillespie.m**: Gillespie simulation of the Birth-death-immigration model. (used in **HW1\_5\_Lin.m**)
+* **BDIODE.m**: ODE of the Birth-death-immigration model. (used in **HW1\_5\_Lin.m**)
+* **chemGillespie.m**: simulating chemical reaction. (used in **HW1\_3\_1\_Lin.m**)
+* **explodGillespie.m**:  Gillespie simulation of an "explosive" system. (used in **HW1\_2\_Lin.m**)
+* **logisticGillespie.m**:  Gillespie simulation of logistic growth. (used in **note\_week\_3\_2.m** and **HW1\_5\_Lin.m**)
+* **logisticODE.m**:  ODE of logistic growth. (used in **note\_week\_3\_2.m** and **HW1\_5\_Lin.m**)
   
 # Utility (everything else)
 
@@ -30,3 +38,9 @@
 * **vline.m** : make vertical line
 
 # markdown\_ and\_pdfs
+
+# resources and links
+* [Online LaTeX equation maker](https://www.codecogs.com/latex/eqneditor.php)
+* [sharelatex](https://www.sharelatex.com/)
+* [Differential equations note](http://tutorial.math.lamar.edu/Classes/DE/Linear.aspx)
+

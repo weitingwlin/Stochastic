@@ -7,6 +7,8 @@
 %%
 % set global parameters
 global k  a1  a2  ka
+    X0 = [0, 0];
+    it = 100;
 %% 
 % Set seed
 
@@ -14,9 +16,8 @@ global k  a1  a2  ka
 % Parameter set 1
     k = 10;      a1 = 10^(-6);  a2 = 10^(-5);  ka =10^(-5) ;
 % simulation
-    tlim = 500;
-    X0 = [0, 0];
-    it = 10
+    tlim = 300;
+    it = 100;
 %%
         xend = zeros(1, it);
         yend = zeros(1, it);
@@ -45,7 +46,7 @@ global k  a1  a2  ka
    % plot the stationary distribution of X
     mysubplot(1,5,4, [], [], 0.1,0.1)
             histogram(xend,'Orientation','horizontal','BinLimits', vaxis,  'Normalization','pdf'); hold on
-            set(gca, 'ytick', [])
+            set(gca, 'ytick', []); ylim(vaxis)
             xlabel('pdf'); title('[X] dist.')
     % plot the stationary distribution of Y        
     mysubplot(1,5,5, [], [], 0.1,0.1)
@@ -56,17 +57,16 @@ global k  a1  a2  ka
 % Parameter set 2
     k = 10^3;  a1 = 10^(-4); a2 = 10^(-3);  ka =10^(-3) ;
 % simulation
-    tlim = 500;
-% it = 100;
+    tlim = 300;
+ it = 100;
             xend = zeros(1, it);
             yend = zeros(1, it);
-%%            
+%%  simulation          
     figure
     mysubplot(1,5,1:3, [], [], 0.1,0.1)
     tic
         rng(123)
-        parfor j = 1:it
-  
+        for j = 1:it
                 % simulation   
                     [t, x] = chemGillespie(X0, tlim);
                 % plot
