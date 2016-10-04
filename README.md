@@ -8,6 +8,7 @@
 ### class notes & practice
 * **note\_week\_2\_1.m**: simulate Poisson events, plot on a time line
 * **note\_week\_3\_2.m**: logistic equation, ODE and Gillespie simulation 
+* **note\_week\_5\_1.m**: Simulating SIR model; cobwebbing to get q*
  
 ### homework 
 * **HW1\_2\_Lin.m**: example of explosive dynamics.
@@ -23,6 +24,7 @@
 * **explodGillespie.m**:  Gillespie simulation of an "explosive" system. (used in **HW1\_2\_Lin.m**)
 * **logisticGillespie.m**:  Gillespie simulation of logistic growth. (used in **note\_week\_3\_2.m** and **HW1\_5\_Lin.m**)
 * **logisticODE.m**:  ODE of logistic growth. (used in **note\_week\_3\_2.m** and **HW1\_5\_Lin.m**)
+* **SIRGillespie**: Gillespie simulation of SIR mode. (used in **note\_week\_5\_1.m** )
   
 # Utility (everything else)
 
@@ -33,8 +35,13 @@
 * **hline.m** : make horizontal line
 * **mycolor.m** : select color 
 * **myplot.m** : make pretty plots
+* **myplot\_vec.m** : plot vector
+* [**myplot_point**](https://github.com/weitingwlin/matlabutility/blob/master/documents/myplot_point.md) : Plotting point process on a time line
+*  [**mystackbar.m**](https://github.com/weitingwlin/matlabutility/blob/master/documents/mystackbar.md) : Make a single stacked bar graph
 * **mystyle.m** : select style
-* **mysubplot.m** : make subplot with major title
+* [**mysubplot**](https://github.com/weitingwlin/matlabutility/blob/master/documents/mysubplot.md)   : make subplot with major title
+* **name2str.m** : return parameter name
+* **para2str.m** : return string(s) with parameter name and value.
 * **vline.m** : make vertical line
 
 # markdown\_ and\_pdfs
