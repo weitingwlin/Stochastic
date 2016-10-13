@@ -47,7 +47,14 @@
 # markdown\_ and\_pdfs
 
 # resources and links
+
+### LaTeX
 * [Online LaTeX equation maker](https://www.codecogs.com/latex/eqneditor.php)
 * [sharelatex](https://www.sharelatex.com/)
+* [LaTeX/Mathematics](https://en.wikibooks.org/wiki/LaTeX/Mathematics)
+
+### Math
 * [Differential equations note](http://tutorial.math.lamar.edu/Classes/DE/Linear.aspx)
+* [Laplace Transformation](http://tutorial.math.lamar.edu/Classes/DE/LaplaceIntro.aspx)
+* [Summation formula](http://homepages.gac.edu/~holte/courses/mcs256/documents/summation/top10sums.pdf)
 

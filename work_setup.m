@@ -21,7 +21,7 @@ end
 % laptop
 if strncmp(strout,'Weiting-PC',5)
  cd 'C:\Users\Weiting\Dropbox\DataCoding\MATLAB\Stochastic'
- % addpath 'C:\Users\Weiting\Dropbox\DataCoding\utility_wtl\mfiles'
+  addpath 'C:\Users\Weiting\Dropbox\DataCoding\MATLAB\Stochastic\utility'
 end
 
 
