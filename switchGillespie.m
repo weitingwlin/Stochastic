@@ -13,25 +13,24 @@ v{7} = [1 0 -1 0];    % * reaction 7: rA --> A
 v{8} = [0 1 0 -1];    % * reaction 8: rB --> B
 %%
 global gA gB dA dB alpha0 alpha1
-S = length(X0);     % number of species
-t = zeros(1e6,1);   % 
-X = zeros(1e6,S);
-E = zeros(1e6,1); % record events
-X(1, :) = X0; 
-point = 1;              % keep track of points: a point can be any change in state
-
+    S = length(X0);     % number of species
+    t = zeros(1e6,1);   % 
+    X = zeros(1e6,S);
+    X(1, :) = X0; 
+    point = 1;              % keep track of points: a point can be any change in state
 
 while t(point) < tlim
+    % rename the current states
         A = X(point, 1);
         B = X(point, 2);
         rA = X(point, 3);
         rB = X(point, 4);
     % 1. calculate rate of each event
-        rates = [gA * (1 - rB),  ...
+        rates = [gA * (1 - rB),  ... % "off" when rB present
                      gB * (1 - rA),  ...
                      dA * A, ...
                      dB * B, ...
-                     alpha0 * A * (1 - rA - rB),  ... %
+                     alpha0 * A * (1 - rA - rB),  ... %  "off" when rA or rB present
                      alpha0 * B *(1- rA - rB),  ... 
                      alpha1 * rA,...
                      alpha1 * rB ]; 
@@ -41,7 +40,6 @@ while t(point) < tlim
         t(point+1) = t(point) + log(1/rand)/a0; % Calculating the interevent time.
     % 3. witch event
         eventID = datasample(1:8, 1, 'weight', rates); 
-        E(point+1) = eventID; %record event
     % 4. update state                                       
         X(point+1, :) = X(point, :) + v{eventID}; % Updating the state.
     % 5. update the point counter.

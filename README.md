@@ -2,7 +2,7 @@
 
 # m-files (matlab scripts)
 
-### set workingenviornment
+### set working enviornment
 * **work\_setup.m** : set machine-specific working directory 
 
 ### class notes & practice
@@ -38,6 +38,7 @@
 * **myplot\_vec.m** : plot vector
 * [**myplot_point**](https://github.com/weitingwlin/matlabutility/blob/master/documents/myplot_point.md) : Plotting point process on a time line
 *  [**mystackbar.m**](https://github.com/weitingwlin/matlabutility/blob/master/documents/mystackbar.md) : Make a single stacked bar graph
+*  **mystairs.m**: Costomized stair plot
 * **mystyle.m** : select style
 * [**mysubplot**](https://github.com/weitingwlin/matlabutility/blob/master/documents/mysubplot.md)   : make subplot with major title
 * **name2str.m** : return parameter name
@@ -52,9 +53,12 @@
 * [Online LaTeX equation maker](https://www.codecogs.com/latex/eqneditor.php)
 * [sharelatex](https://www.sharelatex.com/)
 * [LaTeX/Mathematics](https://en.wikibooks.org/wiki/LaTeX/Mathematics)
+* [Heaviside function](http://tex.stackexchange.com/questions/14984/how-to-define-the-heaviside-function-in-latex)
 
 ### Math
 * [Differential equations note](http://tutorial.math.lamar.edu/Classes/DE/Linear.aspx)
 * [Laplace Transformation](http://tutorial.math.lamar.edu/Classes/DE/LaplaceIntro.aspx)
 * [Summation formula](http://homepages.gac.edu/~holte/courses/mcs256/documents/summation/top10sums.pdf)
-
+* [Trigonometry](http://math.stackexchange.com/questions/1367487/prove-that-sin-x-2t-1t2-and-cos-x-1-t2-1t2-t-tanx-2)
+* [Trigonometry (in Chinese)](http://baike.baidu.com/view/959840.htm)
+* [Derivative of Trigonometry](http://www.math.brown.edu/utra/trigderivs.html)
