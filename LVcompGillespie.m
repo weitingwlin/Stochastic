@@ -1,7 +1,9 @@
 function [t, X] = LVcompGillespie(X0, tlim)
 %% Use global parameters
-global bA1 bA2 bA3 dA1 dA2 dA3  bB1 bB2 bB3 dB1 dB2 dB3
-
+global bA1 bA2 bA3 dA1 dA2 dA3  bB1 bB2 bB3 dB1 dB2 dB3  k rA rB aA aB bA bB
+      dA1 = 1;        bA1 = rA + dA1;          dB1 = 1;         bB1 = rB + dB1;
+        bA2 = 1/k;    dA2 = (rA*aA + 1)/k;   bB2 = 1/k;    dB2 = (rB*aB + 1)/k;
+        bA3 = 1/k;    dA3 = (rA*bA + 1)/k;   bB3 = 1/k;    dB3 = (rB*bB + 1)/k;
 % process
 v = [];
 v{1} =  [1  0];  % birth of species A

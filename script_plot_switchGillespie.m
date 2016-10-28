@@ -6,11 +6,13 @@
                 set(gca, 'xticklabel', [])
                 axis([0 tlim 0 X0(1)*2.5])
                 ylabel('N_A')
+                hline(X0(1));
     mysubplot(7, 1, 3:4) 
         mystairs(t, x(:,2), 38); hold on
                 set(gca, 'xticklabel', [])
                 axis([0 tlim 0 X0(1)*2.5])
                 ylabel('N_B')
+                 hline(X0(1));
     mysubplot(7, 1, 5)  
         mystairs(t, x(:,3), 39);hold on
                 set(gca, 'xticklabel', [])

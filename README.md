@@ -62,3 +62,6 @@
 * [Trigonometry](http://math.stackexchange.com/questions/1367487/prove-that-sin-x-2t-1t2-and-cos-x-1-t2-1t2-t-tanx-2)
 * [Trigonometry (in Chinese)](http://baike.baidu.com/view/959840.htm)
 * [Derivative of Trigonometry](http://www.math.brown.edu/utra/trigderivs.html)
+* [Dirac delta function (video on Khan Academy)](https://www.khanacademy.org/math/differential-equations/laplace-transform/properties-of-laplace-transform/v/dirac-delta-function)
+* [Integral of Dirac delta function](http://tutorial.math.lamar.edu/Classes/DE/DiracDeltaFunction.aspx)
+* [Taylor series](http://tutorial.math.lamar.edu/Classes/CalcII/TaylorSeries.aspx)

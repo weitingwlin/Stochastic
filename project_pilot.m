@@ -8,12 +8,14 @@ global k rA rB aA aB bA bB
 
 k = 100;
 rA = 1;     rB = 1;
-aA = 2;     aB = 1;
-bA = 2;    bB = 1;
-% with this set of parameters  species B always win 
+aA = 1;     aB = 0.5; % carrying capacity : k1 = k/aA, k2 = k/aB 
+bA = 0.5;     bB =2; % interspecific effect: alpha = bA, beta = bB/aB  
+% k1/alpha >= k2
+%  k1>= k2/beta
+% with this set of parameters  species A always win 
 %% simulation parameters
-tlim =20 ;
-n0 = [1 1];
+tlim =40 ;
+n0 = [ 1 10];
 rng(1)
 %
 % plot ODE prediction
@@ -21,45 +23,74 @@ rng(1)
     figure
     myplot(t-1, ns(:,1), 'L'); hold on
     myplot(t-1, ns(:,2), 'L', 4); 
-    xlabel('time'); ylabel('Population'); title('ODE simulation')
+    xlabel('time'); ylabel('Population'); title({'ODE simulation', para2str(k)})
     legend('Species A','Species B')
+%% landscape
+dnAdt = nan(k + 1);
+dnBdt = nan(k + 1);
+for nA = 0 : k
+        for nB = 0 : k
+                dnAdt(nA+1, nB+1) = rA* nA *( 1 - aA*nA/k - bA*nB/k);
+                dnAdt(nA+1, nB+1) =  rB* nB *( 1 - aB*nB/k - bB*nA/k);
+        end
+end
+    cmap = mycolor('redblue')   ;
+colormap(cmap); 
+image(dnAdt); caxis([-1 1]); colorbar
 
  %% calculate stochastic parameters   
-  k = 20
-    dA1 = 1;         bA1 = rA + dA1;                  
-    dB1 = 1;         bB1 = rB + dB1;
-    bA2 = 1/k;    dA2 = (rA*aA + 1)/k;
-    bB2 = 1/k;    dB2 = (rB*aB + 1)/k;
-    bA3 = 1/k;    dA3 = (rA*bA + 1)/k; 
-    bB3 = 1/k;    dB3 = (rB*bB + 1)/k;
+    k = 50;
+    n0 = [10 10 ]; %     n0 = [2 2 ];       n0 = [2 10 ];
+    it = 100;
+    ntrace = 10;
 
-%%
-tlim = 20;
-it = 100;
-n0 = [10 10]; 
-% n0 = [2 2];
-%%
-destiny = nan(it, 2);
+%% A demograph
 rng(1)
-figure
-mysubplot(1, 5, 1:4)
-    for i = 1:it
-            [t, x] = LVcompGillespie(n0, tlim);
-            if i <= 10
-                    stairs(t, x(:,1),'color', mycolor(3)); hold on  % -1 s
-                    stairs(t, x(:,2),'color', mycolor(4)); hold on  % -1 s
-            end
-            destiny(i, :) = x(end, :);
-    end
-            xlim([0  tlim]);
-            set(gca, 'linewidth', 2);
-            xlabel('Time', 'fontsize',14); ylabel('Population', 'Fontsize', 14); title('First 10 simulations', 'Fontsize', 14);
-            legend('Species A','Species B')
-    mysubplot(1, 5, 5)
+for k = [20 50 100]
+script_plot_project_DEMO
+end
+%% Get destiny
+    it = 10;
+    n0spec = [10 10; 2 2 ; 2 10]; 
+    kspec = 20:10:200;
+    indDetS = [];
+    indEmpS = [];
+ parastr = para2str(tlim, it, n0, k , [2 2 ]);
+tic
+for n =1: length(n0spec)
+        n0 = n0spec(n, :);
+        indDet =zeros(length(kspec), 1);
+        indEmp =zeros(length(kspec), 1);
+        for j = 1:length(kspec)
+                destiny = nan(it, 2);
+                k = kspec(j);
+            for i = 1:it
+                [t, x] = LVcompGillespie(n0, tlim);
+                destiny(i, :) = x(end, :);
+            end  
             sum_destiny =sum([all(destiny, 2), destiny>1, any(destiny, 2)==0]);
-            mystackbar(sum_destiny, [1 3 4 40])
-            title('Destiny')  
-            legend('empty', 'A win', 'B win', 'coexist')
-
-            parastr = para2str(tlim, n0, it, k, aA, aB, bA, bB, [3, 5])      
-            mysubplot(1, 5, 0,{'Gillespie simulation', parastr{:}})  
+        indDet(j) = sum_destiny(2) / (sum_destiny(2) + sum_destiny(3));
+        indEmp(j) = sum_destiny(4)/it;
+        end
+        indDetS{n} = indDet;
+        indEmpS{n} = indEmp;
+        
+end
+ toc
+ %% 
+for n = 1:3
+    figure
+n0 = n0spec(n, :);
+ parastr = para2str(tlim, it, n0);
+ mysubplot(1, 2, 0, {'Local competition results', parastr{:}})
+ mysubplot(1, 2, 1)
+    myplot(kspec, indDetS{n}(1:19));
+        xlabel('k')
+        ylabel('Determinitic index')
+        axis([kspec(1) kspec(end) 0 1])
+mysubplot(1, 2, 2)       
+    myplot(kspec, indEmpS{n});
+        xlabel('k')
+        ylabel('Extinction index')
+             axis([kspec(1) kspec(end) 0 1])
+end

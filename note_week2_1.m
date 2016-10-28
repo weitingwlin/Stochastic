@@ -14,11 +14,11 @@
     text(tau, -0.2,'$\tau$', 'Interpreter','latex', 'fontsize', 20)
 %% simulate Poisson events with inter-event time
     Events = [0]; % 0 is a place-holder
-    n = 6; % number of ecents
+    n = 6; % number of events
     for i = 1 : n
-        mu = rand;
-        X = - log(mu)/lambda;
-        Events = [Events  X+Events(end)];
+            mu = rand;
+            X = - log(mu)/lambda;
+            Events = [Events  X+Events(end)];
     end
     Events = Events(2:end); % remove place-holder
 %% link Poisson to Erlange process
