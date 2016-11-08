@@ -54,6 +54,7 @@
 * [sharelatex](https://www.sharelatex.com/)
 * [LaTeX/Mathematics](https://en.wikibooks.org/wiki/LaTeX/Mathematics)
 * [Heaviside function](http://tex.stackexchange.com/questions/14984/how-to-define-the-heaviside-function-in-latex)
+* [Special characters in text](https://en.wikibooks.org/wiki/LaTeX/Special_Characters)
 
 ### Math
 * [Differential equations note](http://tutorial.math.lamar.edu/Classes/DE/Linear.aspx)
@@ -65,3 +66,5 @@
 * [Dirac delta function (video on Khan Academy)](https://www.khanacademy.org/math/differential-equations/laplace-transform/properties-of-laplace-transform/v/dirac-delta-function)
 * [Integral of Dirac delta function](http://tutorial.math.lamar.edu/Classes/DE/DiracDeltaFunction.aspx)
 * [Taylor series](http://tutorial.math.lamar.edu/Classes/CalcII/TaylorSeries.aspx)
+* [error function](http://mathworld.wolfram.com/Erf.html)
+* [OU process as AR](http://math.stackexchange.com/questions/345773/how-the-ornstein-uhlenbeck-process-can-be-considered-as-the-continuous-time-anal)
