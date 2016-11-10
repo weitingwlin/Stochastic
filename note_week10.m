@@ -40,7 +40,7 @@ mysubplot(1,2,2)
     [t1, V1, te, ve] = sim_neuronODE2([0 4], V0);
     myplot(t1, V1, 'L'); hold on  % -1 so t starts at 0
             hline(Vth, 7, ':')
-       title(para2str(I))
+       title(para2str(I))f
        xlabel('t'); 
        ylim([0 2.5])
            set(gca, 'xtick',[],  'ytick',[])
