@@ -11,3 +11,4 @@ myplot(x, phi, 'L', 13);
     myLatext(0, 0, 'x', 16, 8);
 axis off
 legend('P(x)', '\phi(x)')
+
