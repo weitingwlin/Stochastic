@@ -21,7 +21,7 @@ plotn = 5;
 %%
 rng(2)
 tic
-for i = 1 : it
+for i = 1 : 10
  [V, t, s] =  LIFbpath( V0, sig, T, dt , smax) ;
  ss(i, : )= s;
         if i <= plotn 
@@ -52,7 +52,7 @@ T=3;
 %%
 rng(2)
 tic
-for i = 1 : it
+for i = 1 : 10
  [V, t, s] =  LIFbpath( V0, sig, T, dt , smax) ;
  ss(i, : )= s;
         if i <= plotn 
@@ -60,3 +60,7 @@ for i = 1 : it
         end
 end
 toc
+    xlabel('Time')
+    ylabel('V(t)')
+    title(['Trace of 5 realizations']) 
+    

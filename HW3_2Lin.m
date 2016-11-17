@@ -25,9 +25,6 @@ rng(2)
 tic
 for i = 1 : it
   [X, t] =  MarkovEM(X0, T, dt);
-        if i <= plotn 
-       %     mystairs(t, X, i+21 ) ; hold on
-        end
         ss(i) = X(end);
 end
 toc

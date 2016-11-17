@@ -1,4 +1,5 @@
-% used in `HW3_1Lin`
+% Simulation of LIF model with Brownian movement part
+%  
 function [V,t, s] =  LIFbpath(V0, sig, T,dt, smax)
 global Vreset Vthresh gamma I
 
