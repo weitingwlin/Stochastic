@@ -1,53 +1,40 @@
 % The pilot analysis of the course project
 clear; clc
 %% parameters
-% The stochastic  parameters
-global bA1 bA2 bA3 dA1 dA2 dA3  bB1 bB2 bB3 dB1 dB2 dB3
 % The deterministic parameters
-global k rA rB aA aB bAB bBA
+global k rA rB sA sB bAB bBA
 
 k = 100;
 rA = 1;     rB = 1;
-aA = 1;     aB = 0.5; % carrying capacity : k1 = k/aA, k2 = k/aB 
+sA = 1;     sB = 0.5; % carrying capacity : k1 = k/aA, k2 = k/aB 
 bAB = 0.5;     bBA =2; % interspecific effect: alpha = bA, beta = bB/aB  
 % k1/alpha >= k2
 %  k1>= k2/beta
 % with this set of parameters  species A always win 
 %% simulation parameters
-tlim =40 ;
-n0 = [ 1 1];
-rng(1)
-%% plot ODE prediction
-    [t, ns] = ode45('LVcompODE',[1 tlim+1],  n0);
-    figure
-    myplot(t-1, ns(:,1), 'L'); hold on
-    myplot(t-1, ns(:,2), 'L', 4); 
-    xlabel('time'); ylabel('Population'); title({'ODE simulation', para2str(k)})
-    legend('Species A','Species B')
-%% landscape
-dnAdt = nan(k + 1);
-dnBdt = nan(k + 1);
-for nA = 0 : k
-        for nB = 0 : k
-                dnAdt(nA+1, nB+1) = rA* nA *( 1 - aA*nA/k - bA*nB/k);
-                dnAdt(nA+1, nB+1) =  rB* nB *( 1 - aB*nB/k - bB*nA/k);
-        end
-end
-    cmap = mycolor('redblue')   ;
-colormap(cmap); 
-image(dnAdt); caxis([-1 1]); colorbar
+tlim =20 ;
+n0 = [ 5 5];
 
+
+%% Demo
+  for i = 1:9
+      rng(i)
+  [t, x] = LVcompGillespie2(n0, tlim);
+        subplot(3,3, i);
+        stairs(t, x(:,1),'color', mycolor(3)); hold on  % -1 s
+        stairs(t, x(:,2),'color', mycolor(4));
+            xlim([0  tlim]);
+            set(gca, 'linewidth', 2);
+            xlabel('Time', 'fontsize',14); ylabel('Population', 'Fontsize', 14); 
+            
+  end
  %% calculate stochastic parameters   
-    k = 50;
+    k = 10;
     n0 = [10 10 ]; %     n0 = [2 2 ];       n0 = [2 10 ];
-    it = 100;
+    it = 1;
     ntrace = 10;
 
-%% A demograph
-rng(1)
-for k = [20 50 100]
-script_plot_project_DEMO
-end
+
 %% Get destiny
     it = 10;
     n0spec = [10 10; 2 2 ; 2 10]; 

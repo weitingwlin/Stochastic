@@ -1,12 +1,12 @@
 
 clear
 clc
-global  k rA rB aA aB bA bB EA EB
+global  k rA rB sA sB bAB bBA EA EB
 
 k = 100; % community size
-rA = 1;     rB = 1;
-aA = 1;     aB = 0.5; % carrying capacity : k1 = k/aA, k2 = k/aB 
-bA = 0.5;     bB =2; % interspecific effect: alpha = bA, beta = bB/aB  
+rA = 1;           rB = 1;
+sA = 1;           sB = 0.5; % carrying capacity : k1 = k/aA, k2 = k/aB 
+bAB = 0.5;      bBA =2; % interspecific effect: alpha = bA, beta = bB/aB  
 % k1/alpha >= k2
 %  k1>= k2/beta
 EA = 0.01;  EB = 0.01; % emigration
@@ -18,15 +18,15 @@ EA = 0.01;  EB = 0.01; % emigration
     disp = disp_incidence(distance,c); % dispersal incidence
     n0 = repmat([2 2 ], P, 1); 
 
-    tlim = 100;
-    it = 100;
+    tlim = 10;
+    it = 1;
     ntrace = 10;
 
 %%
 
-[t, x] = LVmetaGillespie(n0, tlim, disp);
+[t, x] = LVmetaGillespie2(n0, tlim, disp);
 
-x1 = permute(x, [1 3 2]); % so the dimensions are [patch, time, species]
+x1 = permute(x, [1 3 2]); % so the dimensions in x1 are [patch, time, species]
  destiny = sum(x( :, :, end),1);
 %  sum_destiny =sum([all(destiny, 2), destiny>1, any(destiny, 2)==0]);
 str = para2str(k, EA, EB, P);
