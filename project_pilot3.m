@@ -2,15 +2,7 @@
 clear; clc
 %% parameters
 % The deterministic parameters
-global k rA rB sA sB bAB bBA
 
-k = 100;
-rA = 1;     rB = 1;
-sA = 1;     sB = 0.5; % carrying capacity : k1 = k/aA, k2 = k/aB 
-bAB = 1;     bBA =2; % interspecific effect: alpha = bA, beta = bB/aB  
-% k1/alpha >= k2
-%  k1>= k2/beta
-% with this set of parameters  species A always win 
 %% simulation parameters
 tlim =20 ;
 n0 = [ 5 5];

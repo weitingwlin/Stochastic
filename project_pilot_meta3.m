@@ -1,12 +1,8 @@
 
 clear
 clc
-global  k rA rB sA sB bAB bBA EA EB
-
 k = 100; % community size
-rA = 1;           rB = 1;
-sA = 1;           sB = 1; % carrying capacity : k1 = k/aA, k2 = k/aB 
-bAB = 0.5;      bBA =2; % interspecific effect: alpha = bA, beta = bB/aB  
+sB = 1;
 % k1/alpha >= k2
 %  k1>= k2/beta
 EA = 0.01;  EB = 0.01; % emigration
@@ -23,8 +19,9 @@ EA = 0.01;  EB = 0.01; % emigration
     ntrace = 10;
 
 %%
+% LVmetaGillespie3(X0, tlim, disp, k , sB, EA, EB)
 tic
-[t, x] = LVmetaGillespie2(n0, tlim, disp);
+[t, x] = LVmetaGillespie3(n0, tlim, disp, k , sB, EA, EB);
 toc
 x1 = permute(x, [1 3 2]); % so the dimensions in x1 are [patch, time, species]
  destiny = sum(x( :, :, end),1);
@@ -45,7 +42,8 @@ mysubplot(Pshow,1,p)
 end
 %% 
 k = 20;
-    it = 10;
+sB=0.5;
+    it = 100;
     rng(1);
     nEsim = 4; % number of levels to simulate
     Esim = logspace(-1, -4, nEsim); % range of dispersal rate to simulate
@@ -54,13 +52,13 @@ k = 20;
     Bwin = zeros(nEsim);
     str = para2str(k,  sB, P);   
 tic  
-for a = 1:nEsim
+parfor a = 1:nEsim
             EA = Esim(a);
     for b = 1:nEsim
             EB = Esim(b);
             sum_destiny = nan(it, 4);
         for i = 1 : it
-            [t, x] = LVmetaGillespie2(n0, tlim, disp);
+            [t, x] = LVmetaGillespie3(n0, tlim, disp,k, sB, EA, EB);
             xend = sum(x( :, :, end),1);
             sum_destiny(i, :) = sum([all(xend, 2), all(xend>0 == [1 0]), all(xend>0 == [0 1]), any(xend, 2)==0], 1); % [coexist, Awin, Bwin, extinct]
         end
